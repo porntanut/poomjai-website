@@ -4,6 +4,44 @@ import "./globals.css";
 import { site, siteUrl } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+
+// ข้อมูลบริษัท + เว็บไซต์ ให้ Google และ AI รู้ว่าเว็บนี้คือใคร ติดต่อยังไง
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "RealEstateAgent"],
+      "@id": `${siteUrl}/#organization`,
+      name: site.name,
+      alternateName: site.nameEn,
+      url: siteUrl,
+      logo: `${siteUrl}${site.logo}`,
+      image: `${siteUrl}${site.logo}`,
+      description: site.description,
+      slogan: site.tagline,
+      telephone: site.contact.phoneHQ,
+      email: site.contact.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "88/8 หมู่ 1 ต.แหลมฟ้าผ่า",
+        addressLocality: "อ.พระสมุทรเจดีย์",
+        addressRegion: "สมุทรปราการ",
+        postalCode: "10290",
+        addressCountry: "TH",
+      },
+      sameAs: [site.contact.facebook, site.contact.instagram, site.contact.tiktok, site.contact.lineUrl],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: site.name,
+      inLanguage: "th-TH",
+      publisher: { "@id": `${siteUrl}/#organization` },
+    },
+  ],
+};
 
 const kanit = Kanit({
   variable: "--font-kanit",
@@ -35,6 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="th" className={`${kanit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
+        <JsonLd data={orgJsonLd} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

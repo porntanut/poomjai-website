@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { projects } from "@/lib/projects";
+import { site, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "โครงการบ้านและทาวน์โฮม",
@@ -7,21 +10,31 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-const projects = [
-  {
-    name: "ภูมิใจ ไพร์ม 2",
-    detail:
-      "ทาวน์โฮม 2 ชั้น กว้าง 4 เมตร 2 ห้องนอน 2 ห้องน้ำ พื้นที่ใช้สอย 74 ตร.ม. ทำเลสุขสวัสดิ์-ประชาอุทิศ",
-  },
-  { name: "ภูมิใจ ไพร์ม", detail: "ทำเลสุขสวัสดิ์-ประชาอุทิศ" },
-  { name: "ภูมิใจ ไพร์ม ลักซ์", detail: "รายละเอียดโครงการเร็ว ๆ นี้" },
-  { name: "ภูมิใจ ไพร์ม ทาวน์", detail: "รายละเอียดโครงการเร็ว ๆ นี้" },
-  { name: "ภูมิใจนิเวศน์ เทพารักษ์", detail: "ทำเลเทพารักษ์–บางบ่อ" },
-];
+// รายการโครงการแบบ JSON-LD ให้ Google และ AI อ่านได้ตรง ๆ
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: `โครงการของ${site.name}`,
+  url: `${siteUrl}/projects`,
+  itemListElement: projects.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "GatedResidenceCommunity",
+      name: p.name,
+      description: p.detail,
+      ...(p.area && {
+        address: { "@type": "PostalAddress", addressLocality: p.area, addressCountry: "TH" },
+      }),
+      provider: { "@id": `${siteUrl}/#organization` },
+    },
+  })),
+};
 
 export default function ProjectsPage() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
+      <JsonLd data={jsonLd} />
       <h1 className="text-3xl md:text-4xl">โครงการของเรา</h1>
       <div className="gold-line mt-4 w-24" />
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
