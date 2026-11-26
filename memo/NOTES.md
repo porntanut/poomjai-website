@@ -1,5 +1,17 @@
 # บันทึกงาน (ใหม่สุดอยู่บน)
 
+## 2026-11-26 · แบนเนอร์ + คำนวณผ่อนบ้าน + Q&A + Search Console
+- ทำแล้ว: สไลด์แรกหน้าแรกเป็นแบนเนอร์ CoverPage (public/images/home/hero-cover-banner.webp) · HeroSlider รองรับสไลด์แบบ banner (แสดงเต็มภาพ ไม่มีข้อความทับ พื้นหลังเบลอ กดไป /projects)
+- ทำแล้ว: ย้ายโปรแกรม loan-calculator มาเป็นหน้า /loan-calculator (src/components/LoanCalculator.tsx) + เมนู "คำนวณผ่อนบ้าน"
+- ทำแล้ว: หน้า /faq (เมนู "Q&A") ข้อมูลอยู่ใน src/lib/faq.ts · ขึ้นเว็บ 12 ข้อ + FAQPage schema ให้ Google/AI อ่าน
+- ทำแล้ว: ใส่รหัสยืนยัน Google Search Console ใน src/app/layout.tsx (verification.google)
+- ทำแล้ว: push ขึ้น GitHub ครบทุกงาน (ยังไม่ขึ้นเว็บจริง เพราะยังไม่ต่อ Vercel)
+- ตัดสินใจ: แบนเนอร์มีข้อความในรูปแล้ว → ไม่ใส่ข้อความเว็บทับ
+- ตัดสินใจ: ย้ายตัวคำนวณเข้ามาในเว็บ แทนการลิงก์ออกไปเว็บ loan-calculator (แบรนด์เดียวกัน ดีต่อ SEO)
+- ตัดสินใจ: Q&A ข้อที่ยังไม่มีข้อมูลจริงใส่ pending: true → ซ่อนจากเว็บ ไม่แต่งตัวเลขเอง
+- ข้อควรระวัง: ไฟล์ภาพอยู่ที่ 01-Assets/photos/CoverPage.jpg (เป็นไฟล์ ไม่ใช่โฟลเดอร์)
+- ข้อควรระวัง: Search Console จะกด Verify ผ่านได้ต่อเมื่อเว็บออนไลน์แล้ว และลิงก์ที่กรอกต้องตรงกับเว็บจริง
+
 ## 2026-11-26 · หน้าแรก + ขึ้น GitHub/Vercel
 - ทำแล้ว: หน้าแรกใหม่ (src/app/page.tsx) มี slider รูป/วิดีโอ, การ์ดโครงการ 3 ใบ, Virtual Tour ภูมิใจ ไพร์ม 2 โครงการ 2 (realsee.ai/VbOOEOZA), จุดเด่น, รูปภายในบ้าน, ปุ่มโทร/LINE
 - ทำแล้ว: คอมโพเนนต์ใหม่ HeroSlider.tsx, VirtualTour.tsx, MobileMenu.tsx (เมนู ☰ บนมือถือ) · Header ติดด้านบนตอนเลื่อน

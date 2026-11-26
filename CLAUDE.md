@@ -5,5 +5,6 @@
 - ลิงก์เว็บ: ใช้ .vercel.app อัตโนมัติ · มีโดเมนแล้วตั้ง NEXT_PUBLIC_SITE_URL ใน Vercel
 - robots.ts เปิดให้บอท AI ทุกตัว
 - หน้าแรก: src/app/page.tsx · สไลด์ src/components/HeroSlider.tsx · Virtual Tour src/components/VirtualTour.tsx
+- คำนวณผ่อนบ้าน: src/components/LoanCalculator.tsx · Q&A: src/lib/faq.ts (pending: true = ซ่อนจากเว็บ)
 - รูป/วิดีโอหน้าแรก: public/images/home (webp) · public/videos
 - GitHub: https://github.com/porntanut/poomjai-website (Private) · บันทึกงาน memo/NOTES.md · งานค้าง memo/TODO.md
