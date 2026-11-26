@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     images: [{ url: site.logo, width: 4267, height: 1367, alt: site.name }],
   },
   robots: { index: true, follow: true },
+  // ยืนยันความเป็นเจ้าของเว็บกับ Google Search Console
+  verification: { google: "1GeBHNvKVO41zEHbQzdcpCPcGilsqDYTcROOXi0WwJY" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
