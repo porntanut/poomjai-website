@@ -18,6 +18,15 @@ const TOUR_URL = "https://realsee.ai/VbOOEOZA";
 // ---------- สไลด์ด้านบน ----------
 const slides: HeroSlide[] = [
   {
+    type: "banner",
+    src: `${IMG}/hero-cover-banner.webp`,
+    blur: `${IMG}/hero-cover-banner-blur.webp`,
+    width: 2400,
+    height: 888,
+    alt: "บ้าน...ที่ดี ชีวิตที่ลงตัว ทาวน์โฮม และบ้านเดี่ยว 2 ที่สุดแห่งทำเล สุขสวัสดิ์-ประชาอุทิศ และเทพารักษ์-บางบ่อ ใกล้รถไฟฟ้าสายสีม่วงใต้ ใกล้เมกาบางนา แหล่งช้อปปิ้ง โรงเรียน และโรงพยาบาล",
+    href: "/projects",
+  },
+  {
     type: "image",
     desktop: `${IMG}/hero-townhome-row-desktop.webp`,
     mobile: `${IMG}/hero-townhome-row-mobile.webp`,

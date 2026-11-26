@@ -26,6 +26,16 @@ export type HeroSlide =
       cta: { label: string; href: string };
     }
   | {
+      // ภาพแบนเนอร์ที่มีข้อความในรูปอยู่แล้ว → แสดงเต็มภาพ ไม่ทับข้อความ
+      type: "banner";
+      src: string;
+      blur: string;
+      width: number;
+      height: number;
+      alt: string;
+      href?: string;
+    }
+  | {
       type: "video";
       src: string;
       poster: string;
@@ -53,6 +63,49 @@ function SlideImage({ slide, priority }: { slide: Extract<HeroSlide, { type: "im
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <img {...rest} className="absolute inset-0 h-full w-full object-cover" />
     </picture>
+  );
+}
+
+function SlideBanner({
+  slide,
+  priority,
+  active,
+}: {
+  slide: Extract<HeroSlide, { type: "banner" }>;
+  priority: boolean;
+  active: boolean;
+}) {
+  const { props } = getImageProps({
+    src: slide.src,
+    alt: slide.alt,
+    width: slide.width,
+    height: slide.height,
+    sizes: "100vw",
+    priority,
+    quality: 82,
+  });
+  const img = (
+    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
+    <img {...props} className="relative h-full w-full object-contain" />
+  );
+  return (
+    <>
+      {/* พื้นหลังเบลอจากภาพเดียวกัน เติมส่วนที่ว่างรอบแบนเนอร์ */}
+      <div
+        aria-hidden
+        className="absolute inset-0 scale-110 bg-cover bg-center blur-2xl"
+        style={{ backgroundImage: `url(${slide.blur})` }}
+      />
+      <div className="absolute inset-0 flex items-center justify-center pb-12 md:pb-14">
+        {slide.href ? (
+          <Link href={slide.href} tabIndex={active ? 0 : -1} className="block h-full w-full">
+            {img}
+          </Link>
+        ) : (
+          img
+        )}
+      </div>
+    </>
   );
 }
 
@@ -117,7 +170,9 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
             aria-hidden={!active}
             className={`absolute inset-0 transition-opacity duration-700 ${active ? "opacity-100" : "pointer-events-none opacity-0"}`}
           >
-            {s.type === "image" ? (
+            {s.type === "banner" ? (
+              <SlideBanner slide={s} priority={i === 0} active={active} />
+            ) : s.type === "image" ? (
               <SlideImage slide={s} priority={i === 0} />
             ) : (
               <>
@@ -151,7 +206,9 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
               </>
             )}
 
-            {/* ข้อความบนสไลด์ */}
+            {/* ข้อความบนสไลด์ (แบนเนอร์มีข้อความในรูปแล้ว ไม่ต้องใส่) */}
+            {s.type !== "banner" && (
+            <>
             <div className="absolute inset-0 bg-gradient-to-t from-forest/90 via-forest/30 to-transparent md:bg-gradient-to-r md:from-forest/90 md:via-forest/50 md:to-transparent" />
             <div className="absolute inset-x-0 bottom-0 z-10 mx-auto max-w-6xl px-6 pb-20 [text-shadow:0_2px_12px_rgba(19,46,42,0.6)] md:inset-y-0 md:flex md:flex-col md:justify-center md:pb-0">
               <div className="max-w-xl">
@@ -168,6 +225,8 @@ export default function HeroSlider({ slides }: { slides: HeroSlide[] }) {
                 </Link>
               </div>
             </div>
+            </>
+            )}
           </div>
         );
       })}
