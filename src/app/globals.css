@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* สีแบรนด์ภูมิใจนิเวศน์ (จาก 00-Context/02-Brand.md) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-forest: #132e2a;
+  --color-gold-light: #eadcc0;
+  --color-gold-dark: #8b5a2b;
+  --color-sage: #8fae96;
+  --color-sage-light: #c9dbbe;
+  --color-slate-green: #5e7a70;
+  --color-cream: #f3e7a1;
+  --font-sans: var(--font-kanit);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-forest);
+  font-family: var(--font-kanit), sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+/* เส้นทองไล่เฉด — ใช้เป็นเส้นเน้นเท่านั้น */
+.gold-line {
+  height: 2px;
+  background: linear-gradient(90deg, #eadcc0, #8b5a2b);
 }
