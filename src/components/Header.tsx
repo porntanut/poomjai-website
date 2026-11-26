@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { pages, site } from "@/lib/site";
+import { menuPages, site } from "@/lib/site";
 import MobileMenu from "@/components/MobileMenu";
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
 
         {/* PC: เมนูเต็ม */}
         <nav className="hidden gap-8 text-sm font-normal md:flex" aria-label="เมนูหลัก">
-          {pages.map((p) => (
+          {menuPages.map((p) => (
             <Link key={p.path} href={p.path} className="hover:text-gold-light">
               {p.label}
             </Link>

@@ -38,7 +38,10 @@ export const pages = [
   { path: "/", label: "หน้าแรก", priority: 1, changeFrequency: "weekly" },
   { path: "/projects", label: "โครงการ", priority: 0.9, changeFrequency: "weekly" },
   { path: "/loan-calculator", label: "คำนวณผ่อนบ้าน", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/faq", label: "Q&A", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/faq", label: "Q&A", priority: 0.8, changeFrequency: "monthly", hideInMenu: true },
   { path: "/about", label: "เกี่ยวกับเรา", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", label: "ติดต่อเรา", priority: 0.8, changeFrequency: "monthly" },
 ] as const;
+
+// หน้าที่แสดงในเมนู (หน้าที่ hideInMenu ยังเปิดได้และอยู่ใน sitemap แต่ไม่โชว์ในเมนู)
+export const menuPages = pages.filter((p) => !("hideInMenu" in p && p.hideInMenu));

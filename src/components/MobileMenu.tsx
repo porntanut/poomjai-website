@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { pages } from "@/lib/site";
+import { menuPages } from "@/lib/site";
 
 // เมนูมือถือ: กด ☰ เปิด · ปิดเองเมื่อกดลิงก์
 export default function MobileMenu() {
@@ -26,7 +26,7 @@ export default function MobileMenu() {
           aria-label="เมนูหลัก (มือถือ)"
           className="absolute inset-x-0 top-full border-t border-white/10 bg-forest px-6 pb-6 pt-2 shadow-xl"
         >
-          {pages.map((p) => (
+          {menuPages.map((p) => (
             <Link
               key={p.path}
               href={p.path}
