@@ -8,3 +8,5 @@
 - คำนวณผ่อนบ้าน: src/components/LoanCalculator.tsx · Q&A: src/lib/faq.ts (pending: true = ซ่อนจากเว็บ)
 - รูป/วิดีโอหน้าแรก: public/images/home (webp) · public/videos
 - GitHub: https://github.com/porntanut/poomjai-website (Private) · บันทึกงาน memo/NOTES.md · งานค้าง memo/TODO.md
+- เว็บจริง: https://poomjai-website-8426.vercel.app
+- SEO/AI: JSON-LD src/components/JsonLd.tsx (บริษัทใน layout.tsx · โครงการ src/lib/projects.ts) · สรุปให้ AI /llms.txt = src/app/llms.txt/route.ts
