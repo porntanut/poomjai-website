@@ -4,3 +4,6 @@
 - ทุกหน้าต้องมี `metadata` (title + description + canonical)
 - ลิงก์เว็บ: ใช้ .vercel.app อัตโนมัติ · มีโดเมนแล้วตั้ง NEXT_PUBLIC_SITE_URL ใน Vercel
 - robots.ts เปิดให้บอท AI ทุกตัว
+- หน้าแรก: src/app/page.tsx · สไลด์ src/components/HeroSlider.tsx · Virtual Tour src/components/VirtualTour.tsx
+- รูป/วิดีโอหน้าแรก: public/images/home (webp) · public/videos
+- GitHub: https://github.com/porntanut/poomjai-website (Private) · บันทึกงาน memo/NOTES.md · งานค้าง memo/TODO.md
